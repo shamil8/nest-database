@@ -1,5 +1,5 @@
 import { Repository } from 'typeorm';
-import { LoggerService } from '../../logger/services/logger.service';
+import { LoggerService } from '@app/logger/services/logger.service';
 
 export abstract class BaseRepository {
   entity: Repository<any>;
