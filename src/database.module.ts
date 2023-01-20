@@ -4,6 +4,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { LoggerModule } from '@app/logger/logger.module';
 import { LoggerService } from '@app/logger/services/logger.service';
 
+import './utils/custom-methods-typeorm';
 import { databaseConfig } from './config/database.config';
 import { DatabaseLoggerService } from './services/database-logger.service';
 import { QueryRunnerService } from './services/query-runner.service';
