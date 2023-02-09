@@ -1,14 +1,23 @@
+import {
+  CreateDateColumn,
+  UpdateDateColumn,
+  DeleteDateColumn,
+  PrimaryColumn,
+} from 'typeorm';
 import { getNANOID } from '@app/crypto-utils/functions/export-settings';
-import { Column, DeleteDateColumn, PrimaryColumn } from 'typeorm';
 
 export abstract class BaseEntity {
   @PrimaryColumn()
   id: string = getNANOID();
 
-  @Column({ type: 'timestamptz', default: () => 'now()' })
+  @CreateDateColumn({ type: 'timestamptz', default: () => 'now()' })
   createdAt?: string;
 
-  @Column({ type: 'timestamptz', default: () => 'now()' })
+  @UpdateDateColumn({
+    type: 'timestamptz',
+    default: () => 'now()',
+    onUpdate: 'now()',
+  })
   updatedAt?: string;
 
   @DeleteDateColumn({ default: null })
