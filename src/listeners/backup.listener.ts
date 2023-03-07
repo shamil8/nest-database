@@ -1,8 +1,7 @@
-import { exec } from 'child_process';
 import { ConfigService } from '@nestjs/config';
 import { sleepTimeout, timeToMs } from '@app/crypto-utils/functions/time.util';
-
 import { LoggerService } from '@app/logger/services/logger.service';
+import { exec } from 'child_process';
 
 export class BackupListener {
   private readonly dbName!: string;

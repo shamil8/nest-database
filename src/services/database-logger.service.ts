@@ -1,7 +1,5 @@
-import { Logger } from 'typeorm';
-import { QueryRunner } from 'typeorm/query-runner/QueryRunner';
-
 import { LoggerService } from '@app/logger/services/logger.service';
+import { Logger } from 'typeorm';
 
 export class DatabaseLoggerService implements Logger {
   /** We set context for logger because we use typeOrm! */
@@ -9,7 +7,7 @@ export class DatabaseLoggerService implements Logger {
 
   constructor(private readonly logger: LoggerService) {}
 
-  logQuery(query: string, parameters?: any[], queryRunner?: QueryRunner): void {
+  logQuery(query: string, parameters?: any[]): void {
     this.logger.verbose(query, { parameters, context: this.context });
   }
 
@@ -33,14 +31,14 @@ export class DatabaseLoggerService implements Logger {
     });
   }
 
-  logSchemaBuild(message: string, queryRunner?: QueryRunner): void {
+  logSchemaBuild(message: string): void {
     this.logger.info(message, {
       stack: this.logSchemaBuild.name,
       context: this.context,
     });
   }
 
-  logMigration(message: string, queryRunner?: QueryRunner): void {
+  logMigration(message: string): void {
     this.logger.verbose(message, {
       stack: this.logMigration.name,
       context: this.context,

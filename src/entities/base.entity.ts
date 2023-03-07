@@ -1,10 +1,10 @@
+import { getNANOID } from '@app/crypto-utils/functions/export-settings';
 import {
   CreateDateColumn,
-  UpdateDateColumn,
   DeleteDateColumn,
   PrimaryColumn,
+  UpdateDateColumn,
 } from 'typeorm';
-import { getNANOID } from '@app/crypto-utils/functions/export-settings';
 
 export abstract class BaseEntity {
   @PrimaryColumn()
