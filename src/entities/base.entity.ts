@@ -11,14 +11,14 @@ export abstract class BaseEntity {
   id: string = getNANOID();
 
   @CreateDateColumn({ type: 'timestamptz', default: () => 'now()' })
-  createdAt?: string;
+  createdAt?: Date;
 
   @UpdateDateColumn({
     type: 'timestamptz',
     default: () => 'now()',
     onUpdate: 'now()',
   })
-  updatedAt?: string;
+  updatedAt?: Date;
 
   @DeleteDateColumn({ default: null })
   deletedAt?: Date | null;

@@ -1,8 +1,8 @@
-import { SelectQueryBuilder } from 'typeorm/query-builder/SelectQueryBuilder';
+import { ObjectLiteral, SelectQueryBuilder } from 'typeorm';
 
 // Declaration Merging Of Module.
 declare module 'typeorm/query-builder/SelectQueryBuilder' {
-  interface SelectQueryBuilder<Entity> {
+  interface SelectQueryBuilder<Entity extends ObjectLiteral> {
     AndDateRange(
       this: SelectQueryBuilder<Entity>,
       startDate?: Date,
@@ -31,7 +31,7 @@ declare module 'typeorm/query-builder/SelectQueryBuilder' {
   }
 }
 
-SelectQueryBuilder.prototype.AndIN = function <Entity>(
+SelectQueryBuilder.prototype.AndIN = function <Entity extends ObjectLiteral>(
   this: SelectQueryBuilder<Entity>,
   aliasWithColumn: string,
   values: string[],
@@ -50,7 +50,9 @@ SelectQueryBuilder.prototype.AndIN = function <Entity>(
  * @param endDate
  * @constructor
  */
-SelectQueryBuilder.prototype.AndDateRange = function <Entity>(
+SelectQueryBuilder.prototype.AndDateRange = function <
+  Entity extends ObjectLiteral,
+>(
   this: SelectQueryBuilder<Entity>,
   startDate?: Date,
   endDate?: Date,
@@ -71,7 +73,9 @@ SelectQueryBuilder.prototype.AndDateRange = function <Entity>(
  * @param status
  * @constructor
  */
-SelectQueryBuilder.prototype.AndStatus = function <Entity>(
+SelectQueryBuilder.prototype.AndStatus = function <
+  Entity extends ObjectLiteral,
+>(
   this: SelectQueryBuilder<Entity>,
   status?: string,
 ): SelectQueryBuilder<Entity> {
@@ -89,7 +93,9 @@ SelectQueryBuilder.prototype.AndStatus = function <Entity>(
  * @param fields
  * @param text
  */
-SelectQueryBuilder.prototype.AndSearch = function <Entity>(
+SelectQueryBuilder.prototype.AndSearch = function <
+  Entity extends ObjectLiteral,
+>(
   this: SelectQueryBuilder<Entity>,
   fields: string[],
   text?: string,
@@ -116,7 +122,9 @@ SelectQueryBuilder.prototype.AndSearch = function <Entity>(
  * @param amountTo
  * @param aliasWithColumn
  */
-SelectQueryBuilder.prototype.AndAmountRange = function <Entity>(
+SelectQueryBuilder.prototype.AndAmountRange = function <
+  Entity extends ObjectLiteral,
+>(
   this: SelectQueryBuilder<Entity>,
   amountFrom?: number,
   amountTo?: number,

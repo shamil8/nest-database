@@ -1,10 +1,10 @@
+import './utils/custom-methods-typeorm';
+
 import { Global, Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { LoggerModule } from '@app/logger/logger.module';
 import { LoggerService } from '@app/logger/services/logger.service';
-
-import './utils/custom-methods-typeorm';
 
 import { databaseConfig } from './config/database.config';
 import { BackupListener } from './listeners/backup.listener';
