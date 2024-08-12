@@ -4,6 +4,7 @@ import { Repository } from 'typeorm';
 export abstract class BaseRepository {
   entity: Repository<any>;
   logger: LoggerService;
+
   protected constructor(entity: Repository<any>, logger: LoggerService) {
     this.entity = entity;
     this.logger = logger;
