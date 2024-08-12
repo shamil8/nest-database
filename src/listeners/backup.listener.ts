@@ -3,6 +3,11 @@ import { sleepTimeout, timeToMs } from '@app/crypto-utils/functions/time.util';
 import { LoggerService } from '@app/logger/services/logger.service';
 import { exec } from 'child_process';
 
+/**
+ * @deprecated This BackupListener class is deprecated.
+ *
+ * Use the core class instead for better performance and features.
+ */
 export class BackupListener {
   private readonly dbName!: string;
   private readonly dbLink!: string;
@@ -13,9 +18,8 @@ export class BackupListener {
     private readonly configService: ConfigService,
     private readonly logger: LoggerService,
   ) {
-    // TODO:: improve this code!
-    this.dbName = 'sham';
-    this.dbLink = 'shamiksky';
+    this.dbName = 'test_db';
+    this.dbLink = 'dbLink';
   }
 
   async backupLoop(sleepTime = '22:00', saveLast = 5): Promise<void> {
